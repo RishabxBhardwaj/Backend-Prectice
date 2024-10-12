@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-10">
+        <form class="task-set bg-white p-5 rounded-lg shadow-md mb-6" method="post" action="/add-task">
+            <h2 class="text-xl font-bold mb-4">Add a New Task</h2>
+            <input class="border border-gray-300 p-2 w-full mb-4 rounded" type="text" name="title" placeholder="Task title" required>
+            <textarea class="border border-gray-300 p-2 w-full mb-4 rounded" name="desc" placeholder="Brief about the task" required></textarea>
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Add Task</button>
+        </form>
+      
+        <div class="task-div grid grid-cols-1    sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <% if(files.length > 0){%>
+                <%files.forEach(function(val){%>
+                    <div class="task bg-white p-4 rounded-lg shadow-md">
+                        <h3 class="text-lg font-bold"><%= val %></h3>
+                        <a href="#" class="text-blue-500">Read more...</a>
+                    </div>
+               <% } )%>
+               <% } else{
+                    %> <h3 class="text-lg font-bold">There is no task Avialable yet...</h3> %>
+               <% }%>   
+        </div>
+    </div>
+</body>
+</html>
